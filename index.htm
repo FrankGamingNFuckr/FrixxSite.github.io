@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frixx's YouTube Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0076b6; /* Hawaiian Blue */
+            color: #333;
+        }
+
+        header {
+            background-color: #00274c; /* Navy blue */
+            color: #ffcb05; /* Maize yellow */
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 2em;
+        }
+
+        .links img {
+            width: 150px;
+            height: auto;
+            margin: 1em;
+            cursor: pointer;
+            border: 2px solid #00274c;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .links img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .dropdown select {
+            padding: 0.5em;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .bottom-dropdown {
+            margin-top: 2em;
+            text-align: center;
+        }
+
+        .bottom-dropdown select {
+            padding: 0.5em;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Frixx's YouTube Site</h1>
+    </header>
+
+    <div class="container">
+        <div class="links">
+            <a href="https://www.youtube.com/@Frixx420/videos" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube Channel">
+            </a>
+            <a href="https://discord.gg/2YkQygysEm" target="_blank">
+                <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Discord Server">
+            </a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <select onchange="location = this.value;">
+            <option value="" disabled selected>More Options</option>
+            <option value="https://github.com/your-repo">My Site Repository</option>
+            <option value="https://another-site.com">Frixx AI Covers</option>
+        </select>
+    </div>
+</body>
+</html>
