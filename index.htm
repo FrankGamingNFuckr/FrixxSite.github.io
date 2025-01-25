@@ -14,6 +14,7 @@
         }
 
         header {
+            position: relative;
             background-color: #00274c; /* Navy blue */
             color: #ffcb05; /* Maize yellow */
             text-align: center;
@@ -23,6 +24,30 @@
         header h1 {
             margin: 0;
             font-size: 2.5em;
+            z-index: 2; /*  */
+            position: relative;
+        }
+
+        .banner {
+            position: relative;
+            height: 200px; /*  */
+            background-image: url('https://i.imgur.com/IOUhoM5.png'); /*  */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 3; /* Ensures the dropdown is on top of the banner */
+        }
+
+        .dropdown select {
+            padding: 0.5em;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         .container {
@@ -48,17 +73,9 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .dropdown {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-
-        .dropdown select {
-            padding: 0.5em;
-            font-size: 1em;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .video-title {
+            text-align: center;
+            color: #9e0dff;
         }
 
         .bottom-dropdown {
@@ -73,11 +90,44 @@
             border-radius: 5px;
         }
     </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Menu</title>
+    <style>
+        /*  */
+        .dropdown select {
+            background-color: #c73efe; /*  */
+            color: #afbff0; /*  */
+            border: 1px solid #cc0e2e; /* */
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px; /*  */
+            cursor: pointer;
+        }
+
+        /* Hover and focus effects */
+        .dropdown select:hover, 
+        .dropdown select:focus {
+            background-color: #c73efe; /*  */
+            color: #afbff0; /* */
+        }
+    </style>
 </head>
 <body>
+    <div class="banner">
+        <div class="dropdown">
+            <select onchange="location = this.value;">
+                <option value="" disabled selected>Other Pages!</option>
+                <option value="https://github.com/FrankGamingNFuckr/FrixxSite.github.io">My Site Repository</option>
+                <option value="https://frankgamingnfuckr.github.io/FrixxMusicSite.github.io/">Frixx AI Covers</option>
+            </select>
+        </div>
+    </div>
     <header>
         <h1>Frixx's YouTube Site</h1>
     </header>
+
+    <h2 style="text-align: center; color: #00ff1e;">Welcome to Frixx's Youtube channel site!</h2>
 
     <div class="container">
         <div class="links">
@@ -90,12 +140,34 @@
         </div>
     </div>
 
-    <div class="dropdown">
-        <select onchange="location = this.value;">
-            <option value="" disabled selected>More Options</option>
-            <option value="https://github.com/FrankGamingNFuckr/FrixxSite.github.io">My Site Repository</option>
-            <option value="https://frankgamingnfuckr.github.io/FrixxMusicSite.github.io/">Frixx AI Covers</option>
-        </select>
+    <div class="video-title">My Latest Video!</div>
+    <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/iFQaIf8H4hQ?si=BhfI8HxjWK-tIQao" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+        style="display: block; margin: 0 auto;">
+    </iframe>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Licensing Information</title>
+
+<section id="licensing" style="padding: 20px; font-family: Arial, sans-serif;">
+    <div style="border: 2px solid #000; border-radius: 5px; padding: 20px;">
+        <h2>Licensing</h2>
+        <p>
+            All content on this website, including text, images, and code, is licensed under The ANC4.0 <strong>This work is licensed under the Attribution-NonCommercial 4.0 International License. You are free to share, remix, and adapt the content, as long as you give appropriate credit to the owner "Frixx" Commercial use of the work is not allowed without prior permission. For more details, visit the full license terms.</strong>. 
+            Redistribution or use of any materials without proper authorization is prohibited. For inquiries about licensing or permissions, 
+            please contact me at: <strong>Frixxtwitchyt@gmail.com</strong>
+        </p>
     </div>
+</section>
+
+
 </body>
 </html>
