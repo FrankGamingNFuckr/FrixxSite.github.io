@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frixx's YouTube Site</title>
     <style>
+        /* CSS for mobile restriction */
+        @media (max-width: 800px) {
+            body {
+                display: none; /* Hide content on mobile */
+            }
+            .mobile-restricted {
+                display: block;
+            }
+        }
+
+        /* Body styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -13,6 +24,7 @@
             color: #333;
         }
 
+        /* Header styling */
         header {
             position: relative;
             background-color: #00274c; /* Navy blue */
@@ -24,23 +36,25 @@
         header h1 {
             margin: 0;
             font-size: 2.5em;
-            z-index: 2; /*  */
+            z-index: 2;
             position: relative;
         }
 
+        /* Banner styling */
         .banner {
             position: relative;
-            height: 200px; /*  */
-            background-image: url('https://i.imgur.com/IOUhoM5.png'); /*  */
+            height: 200px;
+            background-image: url('https://i.imgur.com/IOUhoM5.png');
             background-size: cover;
             background-position: center;
         }
 
+        /* Dropdown styling */
         .dropdown {
             position: absolute;
             top: 10px;
             right: 10px;
-            z-index: 3; /* Ensures the dropdown is on top of the banner */
+            z-index: 3;
         }
 
         .dropdown select {
@@ -50,6 +64,7 @@
             border-radius: 5px;
         }
 
+        /* Main container styling */
         .container {
             display: flex;
             justify-content: center;
@@ -58,6 +73,7 @@
             padding: 2em;
         }
 
+        /* Links styling */
         .links img {
             width: 150px;
             height: auto;
@@ -73,11 +89,13 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        /* Video title styling */
         .video-title {
             text-align: center;
             color: #9e0dff;
         }
 
+        /* Bottom dropdown styling */
         .bottom-dropdown {
             margin-top: 2em;
             text-align: center;
@@ -89,31 +107,35 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-    </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropdown Menu</title>
-    <style>
-        /*  */
-        .dropdown select {
-            background-color: #c73efe; /*  */
-            color: #afbff0; /*  */
-            border: 1px solid #cc0e2e; /* */
-            padding: 8px;
-            font-size: 16px;
-            border-radius: 5px; /*  */
-            cursor: pointer;
-        }
 
-        /* Hover and focus effects */
-        .dropdown select:hover, 
-        .dropdown select:focus {
-            background-color: #c73efe; /*  */
-            color: #afbff0; /* */
+        /* Styling for mobile restriction message */
+        .mobile-restricted {
+            display: none;
+            text-align: center;
+            color: white;
+            font-size: 1.5em;
+            margin-top: 50px;
         }
     </style>
+
+    <script>
+        // JavaScript for mobile detection and redirection
+        function detectMobile() {
+            if (window.innerWidth <= 800) { // Mobile device width threshold
+                document.body.style.display = 'none'; // Hide the body content
+                document.querySelector('.mobile-restricted').style.display = 'block'; // Show restriction message
+            }
+        }
+        window.onload = detectMobile; // Check when the page is loaded
+    </script>
 </head>
 <body>
+
+    <div class="mobile-restricted">
+        <h1>Sorry, mobile access is not allowed.</h1>
+        <p>Please visit on a desktop device for full access.</p>
+    </div>
+
     <div class="banner">
         <div class="dropdown">
             <select onchange="location = this.value;">
@@ -123,6 +145,7 @@
             </select>
         </div>
     </div>
+
     <header>
         <h1>Frixx's YouTube Site</h1>
     </header>
@@ -152,22 +175,16 @@
         style="display: block; margin: 0 auto;">
     </iframe>
 
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Licensing Information</title>
-
-<section id="licensing" style="padding: 20px; font-family: Arial, sans-serif;">
-    <div style="border: 2px solid #000; border-radius: 5px; padding: 20px;">
-        <h2>Licensing</h2>
-        <p>
-            All content on this website, including text, images, and code, is licensed under The ANC4.0 <strong>This work is licensed under the Attribution-NonCommercial 4.0 International License. You are free to share, remix, and adapt the content, as long as you give appropriate credit to the owner "Frixx" Commercial use of the work is not allowed without prior permission. For more details, visit the full license terms.</strong>. 
-            Redistribution or use of any materials without proper authorization is prohibited. For inquiries about licensing or permissions, 
-            please contact me at: <strong>Frixxtwitchyt@gmail.com</strong>
-        </p>
-    </div>
-</section>
-
+    <section id="licensing" style="padding: 20px; font-family: Arial, sans-serif;">
+        <div style="border: 2px solid #000; border-radius: 5px; padding: 20px;">
+            <h2>Licensing</h2>
+            <p>
+                All content on this website, including text, images, and code, is licensed under The ANC4.0 <strong>This work is licensed under the Attribution-NonCommercial 4.0 International License. You are free to share, remix, and adapt the content, as long as you give appropriate credit to the owner "Frixx" Commercial use of the work is not allowed without prior permission. For more details, visit the full license terms.</strong>. 
+                Redistribution or use of any materials without proper authorization is prohibited. For inquiries about licensing or permissions, 
+                please contact me at: <strong>Frixxtwitchyt@gmail.com</strong>
+            </p>
+        </div>
+    </section>
 
 </body>
 </html>
