@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frixx's YouTube Site</title>
+
+    <!-- Favicon link -->
+    <link rel="icon" href="favicon.png" type="image/png"> <!-- Replace IMAGEHERE.PNG with your actual favicon file name -->
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,7 +48,7 @@
             transform: translateX(-100%);
             transition: transform 0.3s ease-in-out;
             z-index: 1000;
-            padding-top: 3em; /* */
+            padding-top: 3em;
         }
 
         aside.open {
@@ -92,8 +96,8 @@
             padding: 2em;
             display: flex;
             flex-direction: column;
-            align-items: center; /* */
-            justify-content: center; /* */
+            align-items: center;
+            justify-content: center;
             text-align: center;
             transition: transform 0.3s;
         }
@@ -102,7 +106,7 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
-            gap: 2em; /* Spacing between items */
+            gap: 2em;
             margin-top: 2em;
         }
 
@@ -141,12 +145,12 @@
         .video-title {
             text-align: center;
             color: #9e0dff;
-            margin-top: 2em; 
+            margin-top: 2em;
         }
 
         iframe {
-            width: 80%;  /* Adjust width */
-            height: 500px; /* Set height */
+            width: 80%;  
+            height: 500px; 
             border: none;
         }
 
@@ -160,7 +164,6 @@
             }
         }
 
-       
         .license {
             background-color: #000000;
             color: #ffffff;
@@ -175,10 +178,8 @@
     </style>
 </head>
 <body>
-    <!-- Menu button opens the sidebar -->
     <button class="toggle-button" onclick="toggleSidebar()">☰ Menu</button>
 
-    <!-- Sidebar -->
     <aside id="sidebar">
         <ul>
             <li><a href="https://github.com/FrankGamingNFuckr/FrixxSite.github.io" target="_blank">My Site Repository</a></li>
@@ -221,16 +222,14 @@
     </div>
 
     <!-- License Section -->
-<div class="license">
-    <h3>Licensing</h3>
-    <p>All content on this website, including text, images, and code, is licensed under The ANC4.0. This work is licensed under the Attribution-NonCommercial 4.0 International License. You are free to share, remix, and adapt the content, as long as you give appropriate credit to the owner "Frixx." Commercial use of the work is not allowed without prior permission. For more details, visit the full license terms. Redistribution or use of any materials without proper authorization is prohibited. For inquiries about licensing or permissions, please contact me at: <a href="mailto:Frixxtwitchyt@gmail.com">Frixxtwitchyt@gmail.com</a>.</p>
-</div>
-
+    <div class="license">
+        <h3>Licensing</h3>
+        <p>All content on this website, including text, images, and code, is licensed under The ANC4.0. This work is licensed under the Attribution-NonCommercial 4.0 International License. You are free to share, remix, and adapt the content, as long as you give appropriate credit to the owner "Frixx." Commercial use of the work is not allowed without prior permission. For more details, visit the full license terms. Redistribution or use of any materials without proper authorization is prohibited. For inquiries about licensing or permissions, please contact me at: <a href="mailto:Frixxtwitchyt@gmail.com">Frixxtwitchyt@gmail.com</a>.</p>
+    </div>
 
     <script>
         const sidebar = document.getElementById('sidebar');
 
-        
         function toggleSidebar() {
             sidebar.classList.toggle('open');
         }
