@@ -1,238 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frixx's YouTube Site</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frixx's YouTube Site</title>
 
-    <!-- Favicon link -->
-    <link rel="icon" href="favicon.png" type="image/png"> <!-!>
+  <!-- Favicon link -->
+  <link rel="icon" href="favicon.png" type="image/png" />
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0076b6; /* Hawaiian Blue */
-            color: #333;
-            overflow-x: hidden;
-        }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0076b6; /* Hawaiian Blue */
+      color: #333;
+      overflow-x: hidden;
+    }
 
-        header {
-            background-color: #00274c; /* Navy blue */
-            color: #ffcb05; /* Maize yellow */
-            text-align: center;
-            padding: 1em 0;
-        }
+    header {
+      background-color: #00274c; /* Navy blue */
+      color: #ffcb05; /* Maize yellow */
+      text-align: center;
+      padding: 1em 0;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
 
-        .banner {
-            height: 200px;
-            background-image: url('https://i.imgur.com/IOUhoM5.png');
-            background-size: cover;
-            background-position: center;
-        }
+    .banner {
+      height: 200px;
+      background-image: url('https://i.imgur.com/IOUhoM5.png');
+      background-size: cover;
+      background-position: center;
+    }
 
-        aside {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #00274c; /* Navy blue */
-            color: #ffcb05; /* Maize yellow */
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            z-index: 1000;
-            padding-top: 3em;
-        }
+    aside {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background-color: #00274c; /* Navy blue */
+      color: #ffcb05; /* Maize yellow */
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+      padding-top: 3em;
+    }
 
-        aside.open {
-            transform: translateX(0);
-        }
+    aside.open {
+      transform: translateX(0);
+    }
 
-        aside ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+    aside ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-        aside ul li {
-            padding: 1em;
-            text-align: center;
-        }
+    aside ul li {
+      padding: 1em;
+      text-align: center;
+    }
 
-        aside ul li a {
-            color: #ffcb05;
-            text-decoration: none;
-            font-size: 1.2em;
-            display: block;
-            transition: background-color 0.3s;
-        }
+    aside ul li a {
+      color: #ffcb05;
+      text-decoration: none;
+      font-size: 1.2em;
+      display: block;
+      transition: background-color 0.3s;
+    }
 
-        aside ul li a:hover {
-            background-color: #004080;
-        }
+    aside ul li a:hover {
+      background-color: #004080;
+    }
 
-        .toggle-button {
-            position: fixed;
-            top: 1em;
-            left: 1em;
-            background-color: #ffcb05;
-            border: none;
-            color: #00274c;
-            padding: 0.5em 1em;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-            z-index: 1100;
-        }
+    .toggle-button {
+      position: fixed;
+      top: 1em;
+      left: 1em;
+      background-color: #ffcb05;
+      border: none;
+      color: #00274c;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      z-index: 1100;
+    }
 
-        .container {
-            padding: 2em;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: transform 0.3s;
-        }
+    .container {
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: transform 0.3s;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .links {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 2em;
-            margin-top: 2em;
-        }
+    /* --- Fixed fandom hub section styles --- */
+    .fandom-hub {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 3em 0 4em 0;
+      flex-wrap: wrap;
+    }
 
-        .links div {
-            text-align: center;
-        }
+    .box-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 200px;
+    }
 
-        .links .label {
-            margin-bottom: 0.5em;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
+    .box {
+      background-color: #00274c;
+      width: 200px;
+      height: 200px;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+      border: 2px solid #ffcb05;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: white;
+      text-decoration: none;
+    }
 
-        .links .youtube-label {
-            color: #FF0000; /* YouTube red */
-        }
+    .box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px #ffcb05;
+    }
 
-        .links .discord-label {
-            color: #5865F2; /* Discord blue */
-        }
+    .box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+      transition: opacity 0.3s;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 15px;
+      z-index: 0;
+    }
 
-        .links img {
-            width: 150px;
-            height: auto;
-            cursor: pointer;
-            border: 2px solid #00274c;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    .box:hover img {
+      opacity: 1;
+    }
 
-        .links img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+    .box span {
+      position: relative;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 15px 0;
+      font-size: 1.2em;
+      font-weight: bold;
+      border-radius: 0 0 15px 15px;
+    }
 
-        .video-title {
-            text-align: center;
-            color: #9e0dff;
-            margin-top: 2em;
-        }
+    .caption {
+      margin-top: 10px;
+      font-size: 1em;
+      color: #ffcb05;
+      text-align: center;
+      font-weight: bold;
+    }
 
-        iframe {
-            width: 80%;  
-            height: 500px; 
-            border: none;
-        }
+    .video-title {
+      text-align: center;
+      color: #9e0dff;
+      margin-top: 2em;
+    }
 
-        @media (max-width: 768px) {
-            .links img {
-                width: 100px;
-            }
+    iframe {
+      width: 80%;
+      height: 500px;
+      border: none;
+    }
 
-            aside ul li a {
-                font-size: 1em;
-            }
-        }
+    @media (max-width: 768px) {
+      /* Make fandom hub stack vertically on mobile */
+      .fandom-hub {
+        gap: 20px;
+      }
 
-        .license {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 1em;
-            border-radius: 30px;
-            width: 80%;
-            max-width: 800px;
-            margin: 3em auto 2em auto; 
-            text-align: center;
-            font-weight: bold;
-        }
-    </style>
+      .box-container {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .box {
+        width: 100%;
+        height: 180px;
+      }
+
+      .caption {
+        font-size: 0.95em;
+      }
+    }
+
+    .license {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 1em;
+      border-radius: 30px;
+      width: 80%;
+      max-width: 800px;
+      margin: 3em auto 2em auto;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <button class="toggle-button" onclick="toggleSidebar()">☰ Menu</button>
+  <button class="toggle-button" onclick="toggleSidebar()">☰ Menu</button>
 
-    <aside id="sidebar">
-        <ul>
-            <li><a href="https://github.com/FrankGamingNFuckr/FrixxSite.github.io" target="_blank">My Site Repository</a></li>
-            <li><a href="https://frankgamingnfuckr.github.io/FrixxMusicSite.github.io/" target="_blank">Frixx AI Covers</a></li>
-            <li><a href="https://www.youtube.com/@Frixx420/videos" target="_blank">YouTube Channel</a></li>
-            <li><a href="https://discord.gg/2YkQygysEm" target="_blank">Discord Server</a></li>
-        </ul>
-    </aside>
+  <aside id="sidebar">
+    <ul>
+      <li><a href="https://github.com/FrankGamingNFuckr/FrixxSite.github.io" target="_blank">My Site Repository</a></li>
+      <li><a href="https://frankgamingnfuckr.github.io/FrixxMusicSite.github.io/" target="_blank">Frixx AI Covers</a></li>
+      <li><a href="https://www.youtube.com/@Frixx420/videos" target="_blank">YouTube Channel</a></li>
+      <li><a href="https://discord.gg/2YkQygysEm" target="_blank">Discord Server</a></li>
+    </ul>
+  </aside>
 
-    <div class="banner"></div>
-    <header>
-        <h1>Frixx's YouTube Site</h1>
-    </header>
+  <div class="banner"></div>
+  <header>
+    <h1>Frixx's YouTube Site</h1>
+  </header>
 
-    <h2 style="text-align: center; color: #00ff1e;">Welcome to Frixx's Youtube channel site!</h2>
+  <h2 style="text-align: center; color: #00ff1e;">Welcome to Frixx's Youtube channel site!</h2>
 
-    <div class="container">
-        <div class="links">
-            <div>
-                <div class="label youtube-label">YouTube</div>
-                <a href="https://www.youtube.com/@Frixx420/videos" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube Channel">
-                </a>
-            </div>
-            <div>
-                <div class="label discord-label">Discord</div>
-                <a href="https://discord.gg/2YkQygysEm" target="_blank">
-                    <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Discord Server">
-                </a>
-            </div>
-        </div>
+  <div class="container">
+    <!-- Removed old .links section -->
 
-        <div class="video-title">My Latest Video!</div>
-        <iframe 
-            src="https://www.youtube.com/embed/iFQaIf8H4hQ?si=BhfI8HxjWK-tIQao" 
-            title="YouTube video player" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
+    <!-- Fixed fandom hub section with fully clickable boxes -->
+    <div class="fandom-hub">
+  <div class="box-container">
+    <a href="https://sites.google.com/view/frixxcharacters/character-list/frixx" class="box">
+      <img src="https://raw.githubusercontent.com/FrankGamingNFuckr/FrixxYTSeriesCharacters/refs/heads/main/asassaasas.png" alt="Characters" />
+      <span>Characters</span>
+    </a>
+    <p class="caption">Explore all the characters in the series! (WIP)</p>
+  </div>
 
-    <!-- License Section -->
-    <div class="license">
-        <h3>Licensing</h3>
-        <p>All content on this website, including text, images, and code, is licensed under The ANC4.0. This work is licensed under the Attribution-NonCommercial 4.0 International License. You are free to share, remix, and adapt the content, as long as you give appropriate credit to the owner "Frixx." Commercial use of the work is not allowed without prior permission. For more details, visit the full license terms. Redistribution or use of any materials without proper authorization is prohibited. For inquiries about licensing or permissions, please contact me at: <a href="mailto:Frixxtwitchyt@gmail.com">Frixxtwitchyt@gmail.com</a>.</p>
-    </div>
+  <div class="box-container">
+    <a href="https://www.youtube.com/@Frixx420" target="_blank" class="box">
+      <img src="https://raw.githubusercontent.com/FrankGamingNFuckr/FrixxYTSeriesCharacters/refs/heads/main/Youtube_logo.png" alt="YouTube" />
+      <span>YouTube</span>
+    </a>
+    <p class="caption">Watch episodes and content on YouTube!</p>
+  </div>
 
-    <script>
-        const sidebar = document.getElementById('sidebar');
+  <div class="box-container">
+    <a href="https://discord.gg/2YkQygysEm" target="_blank" class="box">
+      <img src="https://raw.githubusercontent.com/FrankGamingNFuckr/FrixxYTSeriesCharacters/refs/heads/main/Discord-logo-01.png" alt="Discord" />
+      <span>Discord</span>
+    </a>
+    <p class="caption">Join the official FrixxTV community on Discord!</p>
+  </div>
 
-        function toggleSidebar() {
-            sidebar.classList.toggle('open');
-        }
-    </script>
+  <!-- New button added here -->
+  <div class="box-container">
+    <a href="https://sites.google.com/view/frixxagenda2025/home" target="_blank" class="box">
+      <img src="https://raw.githubusercontent.com/FrankGamingNFuckr/FrixxSite.github.io/refs/heads/main/USA_Flag_Map_PNG_Transparent_Clipart.png" alt="Frixx Agenda 2025" />
+      <span>Frixx Agenda 2025</span>
+    </a>
+    <p class="caption">Check out the Frixx Agenda 2025 site!</p>
+  </div>
+</div>
+
+  <!-- License Section -->
+  <div class="license">
+    <h3>Licensing</h3>
+    <p>
+      All content on this website, including text, images, and code, is licensed under The ANC4.0.
+      This work is licensed under the Attribution-NonCommercial 4.0 International License. You
+      are free to share, remix, and adapt the content, as long as you give appropriate credit to
+      the owner "Frixx." Commercial use of the work is not allowed without prior permission. For
+      more details, visit the full license terms. Redistribution or use of any materials without
+      proper authorization is prohibited. For inquiries about licensing or permissions, please
+      contact me at: <a href="mailto:Frixxtwitchyt@gmail.com">Frixxtwitchyt@gmail.com</a>.
+    </p>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('open');
+    }
+  </script>
 </body>
 </html>
