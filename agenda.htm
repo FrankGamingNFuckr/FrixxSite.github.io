@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#13030a" />
+  <title>Frixx's Agenda 2026</title>
+
+  <link rel="icon" href="favicon.png" type="image/png" />
+
+  <style>
+    :root {
+      --bg0: #070611;
+      --bg1: #08040d;
+      --panel: rgba(14, 9, 18, 0.72);
+      --panel-strong: rgba(14, 9, 18, 0.88);
+      --text: #f4f1ff;
+      --muted: rgba(244, 241, 255, 0.78);
+      --red: #c21414;
+      --red2: #ff2a2a;
+      --purple: rgba(150, 60, 255, 0.40);
+      --stroke: rgba(255, 255, 255, 0.10);
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+      --r: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1100px 700px at 30% 10%, rgba(255, 42, 42, 0.10), transparent 55%),
+                  radial-gradient(900px 650px at 80% 40%, rgba(170, 90, 255, 0.14), transparent 56%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #020209 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.62;
+      background-image: url('assets/starfield.svg');
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1) contrast(1.05);
+      z-index: -2;
+      animation: starDrift 30s linear infinite;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(1000px 520px at 50% 0%, rgba(255, 42, 42, 0.12), transparent 60%),
+                  radial-gradient(900px 520px at 0% 60%, rgba(150, 60, 255, 0.16), transparent 55%);
+      mix-blend-mode: screen;
+      z-index: -1;
+    }
+
+    @keyframes starDrift {
+      0% { transform: translate3d(0, 0, 0) scale(1.02); }
+      50% { transform: translate3d(1.4%, 1.0%, 0) scale(1.04); }
+      100% { transform: translate3d(0, 0, 0) scale(1.02); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before { animation: none; }
+    }
+
+    .toggle-button {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 1100;
+      appearance: none;
+      border: 1px solid rgba(255, 42, 42, 0.35);
+      background: rgba(14, 9, 18, 0.65);
+      color: #ffd9d9;
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .toggle-button:hover { transform: translateY(-1px); border-color: rgba(255, 42, 42, 0.65); }
+    .toggle-button:active { transform: translateY(0); }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.62);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 1000;
+    }
+
+    .overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    aside {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: min(320px, 88vw);
+      height: 100dvh;
+      background: linear-gradient(180deg, rgba(18, 6, 10, 0.95), rgba(4, 2, 9, 0.92));
+      border-right: 1px solid rgba(255, 42, 42, 0.18);
+      transform: translateX(-104%);
+      transition: transform 0.22s ease;
+      z-index: 1050;
+      padding: 70px 16px 18px 16px;
+      box-shadow: 26px 0 70px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    aside.open { transform: translateX(0); }
+
+    aside nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    aside a {
+      text-decoration: none;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    }
+
+    aside a:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 42, 42, 0.45);
+      background: rgba(255, 42, 42, 0.06);
+    }
+
+    .hero {
+      position: relative;
+      padding: 70px 18px 22px 18px;
+      display: grid;
+      place-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background-image:
+        radial-gradient(900px 420px at 50% 18%, rgba(255, 42, 42, 0.22), transparent 62%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.75)),
+        url('USA_Flag_Map_PNG_Transparent_Clipart.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-inner {
+      width: min(1020px, calc(100vw - 36px));
+      border-radius: var(--r);
+      background: rgba(14, 9, 18, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 16px 16px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4.1vw, 3.5rem);
+      letter-spacing: 0.7px;
+      color: #ff2323;
+      text-shadow: 0 4px 30px rgba(255, 35, 35, 0.25);
+      font-weight: 950;
+    }
+
+    .hero p {
+      margin: 10px 0 0 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    main {
+      width: min(1020px, calc(100vw - 36px));
+      margin: 22px auto 32px auto;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .panel h2 {
+      margin: 0;
+      text-align: center;
+      padding: 12px 12px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, rgba(194, 20, 20, 0.95), rgba(255, 42, 42, 0.72));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      letter-spacing: 0.3px;
+      font-weight: 950;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .subhead {
+      margin: 14px 0 0 0;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .plans {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .plan {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+      text-align: left;
+    }
+
+    .plan-media {
+      height: 170px;
+      position: relative;
+      background:
+        radial-gradient(520px 260px at 20% 20%, rgba(255, 42, 42, 0.22), transparent 60%),
+        radial-gradient(520px 260px at 80% 25%, rgba(150, 60, 255, 0.20), transparent 60%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.78));
+    }
+
+    .plan-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/starfield.svg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.55;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .plan-badge {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(14, 9, 18, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-weight: 950;
+      letter-spacing: 0.2px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+    }
+
+    .plan-badge strong { color: #ffd7d7; }
+
+    .plan-body {
+      padding: 14px 14px;
+    }
+
+    .plan-title {
+      margin: 0;
+      color: #ffd7d7;
+      font-weight: 950;
+      letter-spacing: 0.2px;
+      font-size: 1.05rem;
+    }
+
+    .plan-text {
+      margin: 10px 0 0 0;
+      color: rgba(255, 255, 255, 0.86);
+      line-height: 1.45;
+      font-weight: 650;
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 980px) {
+      .plans { grid-template-columns: 1fr; }
+      .plan-media { height: 160px; }
+    }
+
+    .agenda {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .agenda li {
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background:
+        linear-gradient(90deg, rgba(194, 20, 20, 0.55), rgba(150, 60, 255, 0.22)),
+        rgba(255, 255, 255, 0.02);
+      color: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    }
+
+    .agenda li:hover {
+      border-color: rgba(255, 42, 42, 0.35);
+    }
+
+    .coming {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .coming h3 {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.92);
+      letter-spacing: 0.2px;
+    }
+
+    footer {
+      margin: 14px auto 30px auto;
+      width: min(1020px, calc(100vw - 36px));
+      color: rgba(244, 241, 255, 0.65);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    footer a { color: rgba(255, 210, 210, 0.92); }
+
+    @media (max-width: 700px) {
+      .hero { padding-top: 74px; }
+      .panel { padding: 16px 14px; }
+      .agenda li { padding: 12px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <button id="menuButton" class="toggle-button" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+    ☰ Menu
+  </button>
+
+  <div id="overlay" class="overlay" hidden></div>
+
+  <aside id="sidebar" aria-label="Site menu">
+    <nav>
+      <a href="index.htm">Home</a>
+      <a href="agenda.htm">Agenda 2026</a>
+      <a href="https://github.com/FrankGamingNFuckr/FrixxSite.github.io" target="_blank" rel="noreferrer">My Site Repository</a>
+      <a href="https://frankgamingnfuckr.github.io/FrixxMusicSite.github.io/" target="_blank" rel="noreferrer">Frixx AI Covers</a>
+      <a href="https://www.youtube.com/@Frixx420/videos" target="_blank" rel="noreferrer">YouTube Channel</a>
+      <a href="https://discord.gg/2YkQygysEm" target="_blank" rel="noreferrer">Discord Server</a>
+    </nav>
+  </aside>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Frixx's Agenda 2026</h1>
+      <p>My Main Policies and Enactments</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" aria-label="Agenda">
+      <h2>My Main Policies and Enactments</h2>
+      <p class="subhead">(Text content preserved from your Google Sites page.)</p>
+
+      <div class="plans" aria-label="Featured plans">
+        <article class="plan" aria-label="Plan 1">
+          <div class="plan-media">
+            <div class="plan-badge"><strong>Plan #1</strong></div>
+          </div>
+          <div class="plan-body">
+            <h3 class="plan-title">Get rid of the Federal education system</h3>
+            <p class="plan-text">Shift more education authority to states/local districts, reduce federal mandates, and focus on accountable, transparent standards.</p>
+          </div>
+        </article>
+
+        <article class="plan" aria-label="Plan 2">
+          <div class="plan-media">
+            <div class="plan-badge"><strong>Plan #2</strong></div>
+          </div>
+          <div class="plan-body">
+            <h3 class="plan-title">Create a union/association for primary school parents and students</h3>
+            <p class="plan-text">Build a structured way for parents/students to raise concerns, request transparency, and advocate for learning-focused classrooms.</p>
+          </div>
+        </article>
+
+        <article class="plan" aria-label="Plan 3">
+          <div class="plan-media">
+            <div class="plan-badge"><strong>Plan #3</strong></div>
+          </div>
+          <div class="plan-body">
+            <h3 class="plan-title">Separate church and state</h3>
+            <p class="plan-text">Keep government spaces and policies neutral on religion while protecting everyone’s right to personal beliefs and expression.</p>
+          </div>
+        </article>
+      </div>
+
+      <ul class="agenda">
+        <li>Plan #1: Get rid of the Federal education system (shift authority to states/local districts).</li>
+        <li>Plan #2: Create a union/association for primary school parents and students.</li>
+        <li>Plan #3: Separate church and state (keep government facilities neutral on religion).</li>
+        <li>Keep Freedom of speech the way it should be: FREE.</li>
+        <li>Regulate the AI that is taking away jobs for working people, as well as falsely monitoring people.</li>
+        <li>Create a law to protect the children, forces parents to actually monitor what their child views online and teach them right from wrong, rather than make the private company change because the parent refuses to be a parent.</li>
+        <li>More Free content guidelines.</li>
+        <li>Give the youth more freedom of speech and Expression.</li>
+        <li>Lower the Gas prices by 20%.</li>
+        <li>Make Guam, and Puerto Rico the 51st and 52nd state over Canada being the 51st.</li>
+        <li>Ban Corporate Lobbying in Legislation (Remove corporate interference in lawmaking through money or revolving-door politics.)</li>
+        <li>Ban AI Surveillance in Public spaces unless a warrant for arrest is issued.</li>
+        <li>Require companies to disclose (Tell) their consumer if AI is being used.</li>
+        <li>Nationwide Right to Digital privacy / No tracking people without consent.</li>
+        <li>Re-fund the mental institution program for all 50 states to lower the mental health crisis and crime rate(s).</li>
+        <li>Digital companies can no longer sell your personal data for usage.</li>
+        <li>Expand the online “Right to be forgotten” law.</li>
+        <li>Ban AI in the Hiring/Firing algorithm of people a company might be hiring.</li>
+        <li>Ban online companies / social media from Shadowbanning and Algorithm Bias.</li>
+        <li>Make your online Data ownership a human right, so platforms have to ask you for it rather than it being in their ToS.</li>
+        <li>Lifetime Guarantee free healthcare for ALL war Veterans.</li>
+        <li>Housing first for any and all Homeless Veterans in our Nation.</li>
+        <li>Build EMP Attack resistance and cyber resilience.</li>
+        <li>Ban the deployment/use of U.S Soldiers against citizens but not limited to the National Guard in times of heavy riot and Insurrection.</li>
+        <li>Give the option to people to have “Introvert” or “Extrovert” on their Drivers License, State I.D, Passport, and any other Government documents to allow them to Opt out of Non-Government programs.</li>
+        <li>Make Mental Health awareness day (The first Monday in May) a Federal Holiday to actually allow people to learn and take time off for their mental health.</li>
+        <li>Test out a 4 Day workweek in the government to allow Friday to be a day of rest, and Saturday and Sunday an actual off day, with no loss of pay.</li>
+        <li>Ban Emails after work hours, so a company's workers cannot be penalized for ignoring NON-URGENT work outside of working hours.</li>
+      </ul>
+
+      <div class="coming">
+        <h3>TO COME LATER: National Airlines Standard Act</h3>
+        <ul class="agenda" aria-label="Coming later">
+          <li>Ban airlines from giving the consumer random and useless junk fees, guarantee refunds if your flight is cancelled regardless if the consumer had paid extra in case of cancellation.</li>
+          <li>If a delay lasts for more than 2 hours, guarantee the consumer will be given food and water and protection for overbooking.</li>
+          <li>Create a program for the Young/Youth in lower income communities to learn the mechanics of Aviation and Aeronautics, especially in communities that aren’t represented.</li>
+          <li>Give Airline Pilots the right to strike.</li>
+          <li>Give TSA Workers the right to strike.</li>
+          <li>Flight school student debt forgiveness, pilots / aviation tech workers who work domestically in the country for over 5 years begin to get relief from their student debts.</li>
+          <li>National Aviation Day, a day to celebrate and honor the Wright brothers, as well as the millions of people who overlook how aviation works, what a pilot does, and how Air Traffic Controllers are always working to get you to your destination safely.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 FrixxTV</footer>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const menuButton = document.getElementById('menuButton');
+
+    function setSidebarOpen(isOpen) {
+      sidebar.classList.toggle('open', isOpen);
+      overlay.classList.toggle('open', isOpen);
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+
+      if (isOpen) {
+        overlay.hidden = false;
+      } else {
+        overlay.hidden = true;
+      }
+    }
+
+    function toggleSidebar() {
+      setSidebarOpen(!sidebar.classList.contains('open'));
+    }
+
+    menuButton.addEventListener('click', toggleSidebar);
+    overlay.addEventListener('click', () => setSidebarOpen(false));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setSidebarOpen(false);
+    });
+
+    sidebar.addEventListener('click', (event) => {
+      const target = event.target;
+      if (target instanceof HTMLAnchorElement) setSidebarOpen(false);
+    });
+  </script>
+</body>
+</html>
