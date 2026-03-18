@@ -301,6 +301,67 @@
       max-width: 220px;
     }
 
+    .cta {
+      width: min(920px, calc(100vw - 36px));
+      margin: 6px auto 0 auto;
+      padding: 18px 18px;
+      border-radius: 22px;
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin: 0;
+      color: var(--gold);
+      letter-spacing: 0.3px;
+      font-weight: 950;
+      text-shadow: 0 2px 18px rgba(255, 203, 5, 0.12);
+      font-size: clamp(1.2rem, 2.3vw, 1.6rem);
+    }
+
+    .cta p {
+      margin: 10px 0 0 0;
+      color: rgba(234, 242, 255, 0.78);
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .like-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 950;
+      letter-spacing: 0.25px;
+      color: rgba(5, 16, 32, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: linear-gradient(90deg, rgba(255, 203, 5, 0.98), rgba(0, 255, 30, 0.72));
+      box-shadow: 0 0 0 3px rgba(255, 203, 5, 0.10), 0 18px 46px rgba(0, 0, 0, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .like-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 3px rgba(255, 203, 5, 0.14), 0 26px 60px rgba(0, 0, 0, 0.50);
+    }
+
+    .like-button:active { transform: translateY(0); }
+
+    .cta small {
+      display: block;
+      margin-top: 10px;
+      color: rgba(234, 242, 255, 0.62);
+      font-weight: 700;
+    }
+
     .license {
       background: var(--panel-strong);
       color: var(--text);
@@ -400,6 +461,18 @@
         <p class="caption">Read the agenda right here on-site.</p>
       </div>
     </div>
+
+    <section class="cta" aria-label="EconGame">
+      <h2>Hit the Like button — then play my economy game</h2>
+      <p>
+        Frixx EconGame is a browser economy simulator where you can work jobs, manage bank accounts,
+        build businesses, and invest in stocks + crypto.
+      </p>
+      <a class="like-button" href="https://frixxecongame.site/" target="_blank" rel="noreferrer" aria-label="Open Frixx EconGame in a new tab">
+        👍 Like &amp; Play EconGame
+      </a>
+      <small>Opens <strong>frixxecongame.site</strong> in a new tab.</small>
+    </section>
 
     <section class="license" aria-label="Licensing">
       <h3>Licensing</h3>
