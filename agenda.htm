@@ -4,9 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#13030a" />
+  <meta name="description" content="FrixxTV's 2026 agenda: main policies, enactments, and future proposals." />
+  <meta property="og:title" content="Frixx's Agenda 2026" />
+  <meta property="og:description" content="Main policies, enactments, and future proposals from FrixxTV." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://frixxtv.online/agenda.htm" />
+  <link rel="canonical" href="https://frixxtv.online/agenda.htm" />
   <title>Frixx's Agenda 2026</title>
 
   <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="assets/site.css" />
 
   <style>
     :root {
@@ -357,6 +364,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <button id="menuButton" class="toggle-button" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
     ☰ Menu
   </button>
@@ -365,12 +373,13 @@
 
   <aside id="sidebar" aria-label="Site menu">
     <nav>
-      <a href="index.htm">Home</a>
-      <a href="agenda.htm">Agenda 2026</a>
-      <a href="https://github.com/FrankGamingNFuckr/FrixxSite.github.io" target="_blank" rel="noreferrer">My Site Repository</a>
+      <a href="index.html">Home</a>
+      <a href="characters.html">Characters</a>
+      <a href="agenda.htm" aria-current="page">Agenda 2026</a>
       <a href="music.htm">Frixx AI Covers</a>
-      <a href="https://www.youtube.com/@Frixx420/videos" target="_blank" rel="noreferrer">YouTube Channel</a>
-      <a href="https://discord.gg/2YkQygysEm" target="_blank" rel="noreferrer">Discord Server</a>
+      <a href="https://www.youtube.com/@Frixx420/videos" target="_blank" rel="noopener noreferrer">YouTube Channel</a>
+      <a href="https://discord.gg/2YkQygysEm" target="_blank" rel="noopener noreferrer">Discord Server</a>
+      <a href="https://github.com/FrankGamingNFuckr/FrixxSite.github.io" target="_blank" rel="noopener noreferrer">Site Repository</a>
     </nav>
   </aside>
 
@@ -381,7 +390,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="panel" aria-label="Agenda">
       <h2>My Main Policies and Enactments</h2>
       <p class="subhead">(Text content preserved from your Google Sites page.)</p>
@@ -466,38 +475,6 @@
 
   <footer>© 2026 FrixxTV</footer>
 
-  <script>
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    const menuButton = document.getElementById('menuButton');
-
-    function setSidebarOpen(isOpen) {
-      sidebar.classList.toggle('open', isOpen);
-      overlay.classList.toggle('open', isOpen);
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-
-      if (isOpen) {
-        overlay.hidden = false;
-      } else {
-        overlay.hidden = true;
-      }
-    }
-
-    function toggleSidebar() {
-      setSidebarOpen(!sidebar.classList.contains('open'));
-    }
-
-    menuButton.addEventListener('click', toggleSidebar);
-    overlay.addEventListener('click', () => setSidebarOpen(false));
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') setSidebarOpen(false);
-    });
-
-    sidebar.addEventListener('click', (event) => {
-      const target = event.target;
-      if (target instanceof HTMLAnchorElement) setSidebarOpen(false);
-    });
-  </script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

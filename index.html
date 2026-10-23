@@ -4,9 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#061427" />
-  <title>Frixx's YouTube Site</title>
+  <meta name="description" content="Official home of FrixxTV: videos, characters, the 2026 agenda, music covers, and community links." />
+  <meta property="og:title" content="FrixxTV" />
+  <meta property="og:description" content="Videos, characters, agenda, music covers, and the FrixxTV community." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://frixxtv.online/" />
+  <link rel="canonical" href="https://frixxtv.online/" />
+  <title>FrixxTV | Videos, Characters & Community</title>
 
   <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="assets/site.css" />
 
   <style>
     :root {
@@ -402,6 +409,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <button id="menuButton" class="toggle-button" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
     ☰ Menu
   </button>
@@ -410,12 +418,13 @@
 
   <aside id="sidebar" aria-label="Site menu">
     <nav>
-      <a href="index.htm">Home</a>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="characters.html">Characters</a>
       <a href="agenda.htm">Agenda 2026</a>
-      <a href="https://github.com/FrankGamingNFuckr/FrixxSite.github.io" target="_blank" rel="noreferrer">My Site Repository</a>
       <a href="music.htm">Frixx AI Covers</a>
-      <a href="https://www.youtube.com/@Frixx420/videos" target="_blank" rel="noreferrer">YouTube Channel</a>
-      <a href="https://discord.gg/2YkQygysEm" target="_blank" rel="noreferrer">Discord Server</a>
+      <a href="https://www.youtube.com/@Frixx420/videos" target="_blank" rel="noopener noreferrer">YouTube Channel</a>
+      <a href="https://discord.gg/2YkQygysEm" target="_blank" rel="noopener noreferrer">Discord Server</a>
+      <a href="https://github.com/FrankGamingNFuckr/FrixxSite.github.io" target="_blank" rel="noopener noreferrer">Site Repository</a>
     </nav>
   </aside>
 
@@ -426,10 +435,10 @@
     </div>
   </header>
 
-  <main class="container">
+  <main id="main" class="container">
     <div class="fandom-hub">
       <div class="box-container">
-        <a href="https://sites.google.com/view/frixxcharacters/character-list/frixx" class="box" rel="noreferrer">
+        <a href="characters.html" class="box">
           <img src="https://raw.githubusercontent.com/FrankGamingNFuckr/FrixxYTSeriesCharacters/refs/heads/main/asassaasas.png" alt="Characters" />
           <span>Characters</span>
         </a>
@@ -437,7 +446,7 @@
       </div>
 
       <div class="box-container">
-        <a href="https://www.youtube.com/@Frixx420" target="_blank" rel="noreferrer" class="box">
+        <a href="https://www.youtube.com/@Frixx420" target="_blank" rel="noopener noreferrer" class="box">
           <img src="https://raw.githubusercontent.com/FrankGamingNFuckr/FrixxYTSeriesCharacters/refs/heads/main/Youtube_logo.png" alt="YouTube" />
           <span>YouTube</span>
         </a>
@@ -445,7 +454,7 @@
       </div>
 
       <div class="box-container">
-        <a href="https://discord.gg/2YkQygysEm" target="_blank" rel="noreferrer" class="box">
+        <a href="https://discord.gg/2YkQygysEm" target="_blank" rel="noopener noreferrer" class="box">
           <img src="https://raw.githubusercontent.com/FrankGamingNFuckr/FrixxYTSeriesCharacters/refs/heads/main/Discord-logo-01.png" alt="Discord" />
           <span>Discord</span>
         </a>
@@ -461,13 +470,14 @@
       </div>
     </div>
 
-    <section class="cta" aria-label="EconGame">
+    <!-- Temporarily hidden while Frixx EconGame is not actively run. Remove `hidden` to restore it. -->
+    <section class="cta" aria-label="EconGame" hidden>
       <h2>Hit the Like button — then play my economy game</h2>
       <p>
         Frixx EconGame is a browser economy simulator where you can work jobs, manage bank accounts,
         build businesses, and invest in stocks + crypto.
       </p>
-      <a class="like-button" href="https://frixxecongame.site/" target="_blank" rel="noreferrer" aria-label="Open Frixx EconGame in a new tab">
+      <a class="like-button" href="https://frixxecongame.site/" target="_blank" rel="noopener noreferrer" aria-label="Open Frixx EconGame in a new tab">
         👍 Like &amp; Play EconGame
       </a>
       <small>Opens <strong>frixxecongame.site</strong> in a new tab.</small>
@@ -476,51 +486,17 @@
     <section class="license" aria-label="Licensing">
       <h3>Licensing</h3>
       <p>
-        All content on this website, including text, images, and code, is licensed under The ANC4.0.
-        This work is licensed under the Attribution-NonCommercial 4.0 International License. You
-        are free to share, remix, and adapt the content, as long as you give appropriate credit to
-        the owner "Frixx." Commercial use of the work is not allowed without prior permission. For
-        more details, visit the full license terms. Redistribution or use of any materials without
-        proper authorization is prohibited. For inquiries about licensing or permissions, please
-        contact me at: <a href="mailto:Frixxtwitchyt@gmail.com">Frixxtwitchyt@gmail.com</a>.
+        Original content on this website is licensed under
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.
+        You may share or adapt it with credit to Frixx for non-commercial use. Third-party brands,
+        platforms, and content remain the property of their respective owners. For permissions,
+        contact <a href="mailto:Frixxtwitchyt@gmail.com">Frixxtwitchyt@gmail.com</a>.
       </p>
     </section>
   </main>
 
   <footer>© 2026 FrixxTV</footer>
 
-  <script>
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    const menuButton = document.getElementById('menuButton');
-
-    function setSidebarOpen(isOpen) {
-      sidebar.classList.toggle('open', isOpen);
-      overlay.classList.toggle('open', isOpen);
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-
-      if (isOpen) {
-        overlay.hidden = false;
-      } else {
-        overlay.hidden = true;
-      }
-    }
-
-    function toggleSidebar() {
-      setSidebarOpen(!sidebar.classList.contains('open'));
-    }
-
-    menuButton.addEventListener('click', toggleSidebar);
-    overlay.addEventListener('click', () => setSidebarOpen(false));
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') setSidebarOpen(false);
-    });
-
-    sidebar.addEventListener('click', (event) => {
-      const target = event.target;
-      if (target instanceof HTMLAnchorElement) setSidebarOpen(false);
-    });
-  </script>
+  <script src="assets/site.js"></script>
 </body>
 </html>
