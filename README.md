@@ -2,7 +2,7 @@
 
 Pages:
 - `index.html` — Home
-- `characters.html` — Characters hub (migration landing page)
+- `characters.html` — Frixxverse Fandom landing page
 - `agenda.htm` — Agenda 2026
 - `music.htm` — Frixx AI Covers
 
